@@ -1,24 +1,37 @@
 import bo.MakeupBO;
 import factory.BrowserFactory;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import java.io.ByteArrayInputStream;
 import java.util.concurrent.TimeUnit;
+
+@Listeners(ListenerTest.class)
+
 
 
 public class MakeupTest {
 
-    @Attachment(value="Page screen", type="image/png")
+    @Attachment(value = "Page Screen", type="image/png")
+    byte[] getScreenshot(){
+        Allure.addAttachment("Any text", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+        return ((TakesScreenshot) BrowserFactory.getChromeDriver()).getScreenshotAs(OutputType.BYTES);
+    }
+
+    WebDriver driver = BrowserFactory.getChromeDriver();
+    MakeupBO shop = new MakeupBO(driver);
 
     @Test
     void LoginTest(){
-        WebDriver driver = BrowserFactory.getChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-        MakeupBO shop = new MakeupBO(driver);
 
         //step 1 go to site
         shop.goToHome();
@@ -36,11 +49,6 @@ public class MakeupTest {
 
     @Test
     void SearchProductTest(){
-        WebDriver driver = BrowserFactory.getChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-        MakeupBO shop = new MakeupBO(driver);
-
         //step 1 go to site
         shop.goToHome();
 
@@ -56,10 +64,8 @@ public class MakeupTest {
 
     @Test
     void AddProductToCart(){
-        WebDriver driver = BrowserFactory.getChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-        MakeupBO shop = new MakeupBO(driver);
 
         //step 1 go to site
         shop.goToHome();
@@ -80,10 +86,8 @@ public class MakeupTest {
 
     @Test
     void DeleteProductFromCart(){
-        WebDriver driver = BrowserFactory.getChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-        MakeupBO shop = new MakeupBO(driver);
 
         //step 1 go to site
         shop.goToHome();
@@ -101,7 +105,6 @@ public class MakeupTest {
         shop.CartIsEmpty();
 
     }
-
 
 
 //    @Test

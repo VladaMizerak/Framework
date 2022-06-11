@@ -21,9 +21,9 @@ public class HomeFactoryPO {
         driver.get("https://makeup.com.ua/ua/");
     }
 
-    public SignInFactoryPO clickSignIn() {
+    public SignInPO clickSignIn() {
         signInButton.myClick();
-        return new SignInFactoryPO(driver);
+        return new SignInPO(driver);
 
     }
 }

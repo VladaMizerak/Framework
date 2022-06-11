@@ -19,11 +19,13 @@ public class HomePO {
         driver.findElement(By.xpath("/html/body/div[1]/div[1]/header/div[1]/div/div[3]/div")).click();
         return new SignInPO(driver);
     }
+//
+//    public FeedbackPO clickFeedback(){
+//        driver.findElement(By.xpath("/html/body/div[1]/div[1]/header/div[2]/div/div[1]/div[2]")).click();
+//        return new FeedbackPO(driver);
+//    }
 
-    public FeedbackPO clickFeedback(){
-        driver.findElement(By.xpath("/html/body/div[1]/div[1]/header/div[2]/div/div[1]/div[2]")).click();
-        return new FeedbackPO(driver);
-    }
+
 
     public SearchPO insertProduct(String inputText){
         driver.findElement(By.xpath("//*[@id=\"search-input\"]")).sendKeys(inputText);

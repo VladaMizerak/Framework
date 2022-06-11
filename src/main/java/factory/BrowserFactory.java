@@ -11,7 +11,6 @@ public class BrowserFactory {
 
     public static WebDriver getChromeDriver() {
         if(null==INSTANCE.get()){
-            //ChromeDriverManager.getInstance().setup();
 
             System.setProperty("webdriver.chrome.driver", "driver" + File.separator+"chromedriver.exe");
             INSTANCE.set(new ChromeDriver());
