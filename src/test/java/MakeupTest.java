@@ -1,29 +1,16 @@
 import bo.MakeupBO;
 import factory.BrowserFactory;
-import io.qameta.allure.Allure;
-import io.qameta.allure.Attachment;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import java.io.ByteArrayInputStream;
 import java.util.concurrent.TimeUnit;
 
 @Listeners(ListenerTest.class)
 
-
-
 public class MakeupTest {
-
-    @Attachment(value = "Page Screen", type="image/png")
-    byte[] getScreenshot(){
-        Allure.addAttachment("Any text", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
-        return ((TakesScreenshot) BrowserFactory.getChromeDriver()).getScreenshotAs(OutputType.BYTES);
-    }
 
     WebDriver driver = BrowserFactory.getChromeDriver();
     MakeupBO shop = new MakeupBO(driver);
@@ -44,7 +31,6 @@ public class MakeupTest {
 
         //step 4 insert login and password
         shop.putLogin("mizerak.vlada@gmail.com", "kudravaya2002");
-
     }
 
     @Test
@@ -135,48 +121,6 @@ public class MakeupTest {
 //
 //        //step 7 verify category is filtered
 //        shop.seeFilter();
-//
-//
-//    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    @Test
-//    void FeedbackTest() throws InterruptedException {
-//        WebDriver driver = BrowserFactory.getChromeDriver();
-//        MakeupBO shop = new MakeupBO(driver);
-//        driver.manage().window().maximize();
-//        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-//
-//
-//        //step 1 go to site
-//        shop.goToHome();
-//
-//        //step 2 click feedback button
-//        shop.feedbackButton();
-//
-//        //step 3 verify form is open
-//        shop.verifyFormIsOpen();
-//
-//        //step 4 insert data
-//        shop.putData("Test", "000000000", "test");
-//
-//        //step 5 click send button
-//        shop.sendButton();
-//
-//
-//
 //    }
 
     @AfterTest

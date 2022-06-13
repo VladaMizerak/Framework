@@ -3,6 +3,7 @@ package po;
 import decorator.Button;
 import decorator.FieldDecorator;
 import decorator.Input;
+import decorator.Result;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,7 +21,7 @@ public class SearchPO {
     private Button search;
 
     @FindBy(xpath = "/html/body/div[1]/div[1]/div/div/h1")
-    private WebElement resultList;
+    private Result resultList;
 
 
     public void Results(){
@@ -28,6 +29,6 @@ public class SearchPO {
     }
 
     public boolean ResultCheck(){
-        return resultList.isDisplayed();
+        return resultList.result();
     }
 }

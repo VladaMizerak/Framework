@@ -69,23 +69,5 @@ public class MakeupBO {
     public void seeFilter() { Assert.assertTrue(filterPO.seeFilter());}
 
 
-//    public static void feedbackButton() {
-//       feedbackPO = homePO.clickFeedback();
-//    }
-//
-//    public void verifyFormIsOpen() {
-//        Assert.assertTrue(feedbackPO.FormCheck());
-//    }
-//
-//    public void putData(java.lang.String name, java.lang.String number, java.lang.String text) {
-//        feedbackPO.insertData(java.lang.String.valueOf(name), java.lang.String.valueOf(number), java.lang.String.valueOf(text));
-//    }
-//
-//    public void sendButton() {
-//        feedbackPO.SendFeedback();
-//    }
-//
-
-
 
 }
