@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                git 'https://github.com/VladaMizerak/Framework'
+                sh './mvnw clean compile'
+                // bat '.\\mvnw clean compile'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './mvnw test'
+                // bat '.\\mvnw test'
+            }
+
+        }
+    }
+}
